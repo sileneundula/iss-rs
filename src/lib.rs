@@ -27,6 +27,8 @@ pub mod config;
 /// App
 pub mod app;
 
+pub mod prelude;
+
 
 pub struct ImmutableStorageSolution;
 
