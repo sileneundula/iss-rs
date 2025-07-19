@@ -1,0 +1,12 @@
+[package]
+name = "iss-rs"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+libslug = "0.4.1"
+base58 = "0.2.0"
+serde = {version = "1.0.219", features=["derive"]}
+serde-big-array = "0.5.1"
+
+blake2b-pow = "0.1.1"
