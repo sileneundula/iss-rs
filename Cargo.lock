@@ -120,6 +120,26 @@ dependencies = [
 ]
 
 [[package]]
+name = "bincode"
+version = "2.0.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "36eaf5d7b090263e8150820482d5d93cd964a81e4019913c972f4edcc6edb740"
+dependencies = [
+ "bincode_derive",
+ "serde",
+ "unty",
+]
+
+[[package]]
+name = "bincode_derive"
+version = "2.0.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "bf95709a440f45e986983918d0e8a1f30a9b1df04918fc828670606804ac3c09"
+dependencies = [
+ "virtue",
+]
+
+[[package]]
 name = "bitflags"
 version = "2.9.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -775,6 +795,7 @@ name = "iss-rs"
 version = "0.1.0"
 dependencies = [
  "base58",
+ "bincode 2.0.1",
  "blake2b-pow",
  "libslug",
  "serde",
@@ -831,6 +852,14 @@ dependencies = [
 ]
 
 [[package]]
+name = "lemur-historical-archive-lib"
+version = "0.1.0"
+dependencies = [
+ "serde",
+ "serde_yaml 0.9.34+deprecated",
+]
+
+[[package]]
 name = "leslie_lamport"
 version = "0.3.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -852,9 +881,9 @@ checksum = "1171693293099992e19cddea4e8b849964e9846f4acee11b3948bcc337be8776"
 
 [[package]]
 name = "libslug"
-version = "0.4.1"
+version = "0.5.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "5b478bb9097a01793f80c11ffda1586b8997ecc8d9dccddb48a64098f0191490"
+checksum = "508f42363340c371472698574d0f5b0ea91c9912cd31f96b5d0e680818b5b65f"
 dependencies = [
  "aes-gcm",
  "argon2",
@@ -1339,7 +1368,7 @@ version = "0.7.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "254a0bb6a4457058f3d3cdfed313b567cde5fec9113b39aaac730f4ee34113a9"
 dependencies = [
- "bincode",
+ "bincode 1.3.3",
  "cfg-if",
  "once_cell",
  "postcard",
@@ -1606,6 +1635,12 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "673aac59facbab8a9007c7f6108d11f63b603f7cabff99fabf650fea5c32b861"
 
 [[package]]
+name = "unty"
+version = "0.0.4"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "6d49784317cd0d1ee7ec5c716dd598ec5b4483ea832a2dced265471cc0f690ae"
+
+[[package]]
 name = "vcpkg"
 version = "0.2.15"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1616,6 +1651,12 @@ name = "version_check"
 version = "0.9.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "0b928f33d975fc6ad9f86c8f283853ad26bdd5b10b7f1542aa2fa15e2289105a"
+
+[[package]]
+name = "virtue"
+version = "0.0.18"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "051eb1abcf10076295e815102942cc58f9d5e3b4560e46e53c21e8ff6f3af7b1"
 
 [[package]]
 name = "wasi"

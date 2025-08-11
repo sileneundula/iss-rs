@@ -51,7 +51,7 @@ impl Blob {
 
 fn hash_input_b3(bytes: &[u8]) -> String {
     let hasher = Blake3Hasher::new();
-    let output = hasher.digest(bytes);
+    let output = hasher.update(bytes);
     return SlugDigester::from_bytes(&output).unwrap().digest().to_string()
 }
 

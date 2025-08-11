@@ -22,7 +22,6 @@ impl ImmutableStorageSolutionApp {
 
 pub struct ISSChainRegistration {
     public_facing_id: u128, // id for all chains
-    
     unique_name: String,
     digest_id: String, // 12-bytes (appended to unique_name)
     namespace: String,
