@@ -29,8 +29,6 @@ pub mod app;
 
 pub mod prelude;
 
-pub mod historicalstrg;
-
 
 pub struct ImmutableStorageSolution;
 
