@@ -138,7 +138,7 @@ fn read_file() {
 #[test]
 fn read_file_larger() {
     println!("Reading File... 256kb");
-    let file = LemurFileBytes::from_path("C:\\Users\\silen\\Videos\\2025-07-19 14-27-49.mkv");
+    let file = LemurFileBytes::from_path("C:\\Users\\silen\\Downloads\\eset_smart_security_premium_live_installer.exe");
     println!("Getting File Length...");
     let length = file.get_length();
     println!("File Length: {}", length);

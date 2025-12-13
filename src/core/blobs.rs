@@ -36,8 +36,7 @@ impl Piece {
         if length > PIECE_SIZE_IN_BYTES {
             panic!("Bytes too large")
         }
-
-        if length == PIECE_SIZE_IN_BYTES {
+        else if length == PIECE_SIZE_IN_BYTES {
             let mut byte_slice: [u8;PIECE_SIZE_IN_BYTES] = [0u8;PIECE_SIZE_IN_BYTES];
             byte_slice.copy_from_slice(bytes);
 
@@ -51,17 +50,16 @@ impl Piece {
             // Byte Vector Functionality
             let mut byte_vec: Vec<u8> = vec![];
 
-            let difference = PIECE_SIZE_IN_BYTES - length;
+            let difference = PIECE_SIZE_IN_BYTES - length - 1;
 
             let padding_zeroes: Vec<u8> = vec![0u8;difference];
 
             byte_vec.extend_from_slice(bytes);
-            byte_vec.extend_from_slice(&padding_zeroes);
+            //byte_vec.extend_from_slice(&padding_zeroes);
 
             println!("Byte Length: {}", byte_vec.len());
             
             if byte_vec.len() == PIECE_SIZE_IN_BYTES {
-                panic!("Nothing");
                 byte_slice.copy_from_slice(&byte_vec);
                 return Self(byte_slice)
             }

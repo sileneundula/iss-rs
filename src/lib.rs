@@ -4,17 +4,18 @@
 //! 
 //! ## TODO
 //! 
-//! [] Blockchain
-//!     []
+//! - [ ] Blockchain
+//!     - [X] ISSBLOCK
 //! 
-//! [] Pieces Storage
-//!     [X] Piece (256kb)
-//!         [X] To/From Base58
-//!         [X] To/From Bytes
-//!     [] Mini Piece (16kb)
-//!     [] Tiny Piece (4kb)
+//! - [ ] Pieces Storage
+//!     - [X] Piece (256kb)
+//!         - [X] To/From Base58
+//!         - [X] To/From Bytes
+//!     - [ ] Mini Piece (16kb)
+//!     - [ ] Tiny Piece (4kb)
 //! 
-//!     [] Blob (Base58/Base64)
+//!     - [ ] Blob (Base58/Base64)
+//! 
 //! 
 
 

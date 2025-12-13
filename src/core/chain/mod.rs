@@ -1,7 +1,9 @@
+use crate::core::minipow::PIECE_THRESHOLD;
 use crate::prelude::*;
 use crate::core::xrypto::Blake3Hasher;
 use crate::core::xrypto::SlugDigester;
 use crate::core::xrypto::SlugDigest;
+use crate::core::minipow::MiniPoW;
 
 pub struct ISSBlock {
     id: u64,
@@ -30,11 +32,11 @@ impl Blob {
 
         Self {
             piece: piece,
-            blake3: blake3,
+            blake3: blake3.clone(),
             blake2b: blake2b_64,
             sha3: sha3_224,
             sha2: sha2_256,
-            nonce: None,
+            nonce: Some(MiniPoW::new(blake3.as_bytes(), PIECE_THRESHOLD)),
         }
 
     }
