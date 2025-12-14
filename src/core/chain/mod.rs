@@ -1,3 +1,27 @@
+//! # ISS CHAIN
+//! 
+//! Immutable Storage Chain
+//! 
+//! ## Implementation
+//! - [ ] Consensus
+//!     - [ ] Proof-of-Work
+//!     - [ ] Delegated-Proof-of-Work
+//!     - [ ] Delegated-Proof-of-Stake
+//!     - [ ] Proof-of-Stake
+//! - [ ] Timestamping
+//!     - [ ] Proof-of-History 
+
+
+
+pub mod framework;
+pub mod utils;
+
+
+
+
+
+
+
 use crate::core::minipow::PIECE_THRESHOLD;
 use crate::prelude::*;
 use crate::core::xrypto::Blake3Hasher;

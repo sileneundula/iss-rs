@@ -1,0 +1,6 @@
+[package]
+name = "consensus-dpow-0x20cb-lithium"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

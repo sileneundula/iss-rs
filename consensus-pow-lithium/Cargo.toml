@@ -1,0 +1,9 @@
+[package]
+name = "consensus-pow-lithium"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+bitcoin-u256 = "0.1.19"
+# Hashing Trait
+digest = "0.10.7"

@@ -7,11 +7,17 @@ pub const MINI_PIECE_SIZE_IN_BYTES: usize = 16_384;
 /// 4kb (4*1024) | 4,096 bytes
 pub const TINY_PIECE_SIZE_IN_BYTES: usize = 4_096;
 
+use std::path;
+
+use log::{debug,trace,error,warn,info};
+
 use base58::{FromBase58,ToBase58,FromBase58Error};
 use libslug::slugcrypt::internals::digest::blake3::Blake3Hasher;
 use serde::{Serialize,Deserialize};
 use serde_big_array::BigArray;
 use libslug::slugcrypt::internals::digest::digest::SlugDigest;
+use pretty_env_logger;
+use dotenvy;
 
 /// # Piece
 /// 
@@ -31,31 +37,36 @@ impl Piece {
     /// 
     /// Gets a New Piece From Bytes and Pads With Zeroes
     pub fn new(bytes: &[u8]) -> Self {
+        println!("Creating new Piece from bytes, length: {}", bytes.len());
         let length = bytes.len();
         
         if length > PIECE_SIZE_IN_BYTES {
+            println!("[ISS::PIECE] Bytes too large and are over {0} with byte length being: {1}", PIECE_SIZE_IN_BYTES,length);
             panic!("Bytes too large")
         }
         else if length == PIECE_SIZE_IN_BYTES {
+            println!("[ISS::PIECE] Bytes match PIECE_SIZE_IN_BYTES exactly");
             let mut byte_slice: [u8;PIECE_SIZE_IN_BYTES] = [0u8;PIECE_SIZE_IN_BYTES];
             byte_slice.copy_from_slice(bytes);
-
             return Self(byte_slice)
-            
         }
         else if length < PIECE_SIZE_IN_BYTES {
+            println!("[ISS::PIECE] Bytes less than PIECE_SIZE_IN_BYTES, padding with zeroes");
             // Byte Slice
             let mut byte_slice: [u8;PIECE_SIZE_IN_BYTES] = [0u8;PIECE_SIZE_IN_BYTES];
 
             // Byte Vector Functionality
             let mut byte_vec: Vec<u8> = vec![];
 
-            let difference = PIECE_SIZE_IN_BYTES - length - 1;
+            let difference = PIECE_SIZE_IN_BYTES - length;
+            debug!("Padding Difference: {}", difference);
 
             let padding_zeroes: Vec<u8> = vec![0u8;difference];
 
             byte_vec.extend_from_slice(bytes);
-            //byte_vec.extend_from_slice(&padding_zeroes);
+            byte_vec.extend_from_slice(&padding_zeroes);
+
+            debug!("Final Byte Vector Length: {}", byte_vec.len());
 
             println!("Byte Length: {}", byte_vec.len());
             
@@ -72,7 +83,8 @@ impl Piece {
         }
     }
     pub fn from_bytes(bytes: &[u8]) -> Self {
-        let mut output_bytes = [0u8;PIECE_SIZE_IN_BYTES];
+        println!("%");
+        let mut output_bytes: [u8; 262144] = [0u8;PIECE_SIZE_IN_BYTES];
         
         if bytes.len() == PIECE_SIZE_IN_BYTES {
             output_bytes.copy_from_slice(bytes);
@@ -95,6 +107,23 @@ impl Piece {
     }
     pub fn from_base58(s_bs58: &str) -> Result<Vec<u8>, FromBase58Error> {
         s_bs58.from_base58()
+    }
+    pub fn from_file(path: &path::Path) -> std::io::Result<Self> {
+        use std::fs::File;
+        use std::io::Read;
+
+        let mut file = File::open(path)?;
+        let mut buffer = Vec::new();
+        file.read_to_end(&mut buffer)?;
+
+        if buffer.len() != PIECE_SIZE_IN_BYTES {
+            panic!("File size does not match PIECE_SIZE_IN_BYTES")
+        }
+
+        let mut byte_array: [u8;PIECE_SIZE_IN_BYTES] = [0u8;PIECE_SIZE_IN_BYTES];
+        byte_array.copy_from_slice(&buffer[..PIECE_SIZE_IN_BYTES]);
+
+        Ok(Self(byte_array))
     }
     
     
