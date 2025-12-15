@@ -3,6 +3,10 @@ use std::fs::File;
 use std::path::{PathBuf,Path};
 use iss_rs::core::blobs::Piece;
 use iss_rs::core::blobs::PIECE_SIZE_IN_BYTES;
+use pretty_env_logger;
+use dotenvy;
+use log;
+use std::boxed::Box;
 
 /// TODO:
 /// 
@@ -89,23 +93,24 @@ impl LemurFileBytes {
             panic!("Unknown Error")
         }
     }
-    pub fn into_pieces(&self) -> Vec<Piece> {
+    pub fn into_pieces(&self) -> Vec<Box<Piece>> {
         let parsed = self.parse_file_length();
-        let mut pieces: Vec<Piece> = vec![];
+        let mut pieces: Vec<Box<Piece>> = vec![];
 
         if parsed.0 == Pieces::Piece {
             let mut cursor: usize = 0usize;
             
             for i in 0..parsed.1-1 {
-                let cursor_added = cursor + PIECE_SIZE_IN_BYTES;
-                let y = &self.bytes[cursor..cursor_added];
-                let x = Piece::from_bytes(y);
-                pieces.push(x);
+                let mut cursor_added = cursor + PIECE_SIZE_IN_BYTES;
+                let y: &[u8] = &self.bytes[cursor..cursor_added];
+                println!("Cursor Added: {}", cursor_added);
+                let x: Piece = iss_rs::core::blobs::Piece::from_bytes(y);
+                pieces.push(Box::new(x));
                 cursor += PIECE_SIZE_IN_BYTES;
             }
+            println!("Cursor: {}", cursor);
             let y = &self.bytes[cursor..self.get_length()];
-            println!("y: {}", y.len());
-            let x = Piece::new(y);
+            let x = Box::new(Piece::new(y));
             pieces.push(x);
         }
         return pieces
@@ -137,6 +142,9 @@ fn read_file() {
 
 #[test]
 fn read_file_larger() {
+    pretty_env_logger::init();
+    log::trace!("Test");
+    
     println!("Reading File... 256kb");
     let file = LemurFileBytes::from_path("C:\\Users\\silen\\Downloads\\eset_smart_security_premium_live_installer.exe");
     println!("Getting File Length...");

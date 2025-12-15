@@ -1,0 +1,6 @@
+[package]
+name = "chain-strg-lithium"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

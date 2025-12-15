@@ -1,6 +1,6 @@
 [workspace]
 resolve = "3"
-members = ["lemur-historical-archive-lib"]
+members = ["chain-strg-lithium", "consensus-core-lithium", "consensus-dpos-lithium", "consensus-dpow-0x20cb-lithium", "consensus-pos-lithium", "consensus-pow-lithium","lemur-historical-archive-lib", "modern-address-scheme-rs"]
 
 [package]
 name = "iss-rs"
@@ -9,14 +9,27 @@ edition = "2024"
 
 [dependencies]
 libslug = "0.5.0"
+
+# base58
 base58 = "0.2.0"
+# serialization
 serde = {version = "1.0.228", features=["derive"]}
 serde-big-array = "0.5.1"
 bincode = "2.0.1"
 
+# minipow
 blake2b-pow = "0.1.1"
 
+# logging
 log = "0.4.29"
 pretty_env_logger = "0.5.0"
+
+# error handling
 thiserror = "2.0.17"
+
+# env
 dotenvy = "0.15.7"
+
+# u256
+u256 = "0.1.0"
+bitcoin-u256 = "0.1.19" # use this one
