@@ -1,0 +1,16 @@
+[package]
+name = "modern-address-scheme-rs"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+# Hashing
+digest = "0.10.7"
+
+# Encoding (Constant-Time)
+slugencode = {optional = true, version="0.1.0"}
+
+# MultiAddr
+multiaddr = {optional = true, version="0.18.2"}
+
+blake2 = {optional = true, version="0.10.6"}

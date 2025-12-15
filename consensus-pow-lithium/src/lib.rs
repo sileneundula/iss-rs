@@ -31,16 +31,7 @@ pub struct Mechanism<Hasher: Digest> {
 }
 
 impl Mechanism {
-    pub fn new() {
-        
-        return Self {
-            label: String::from(MECHANISM_POW),
-
-            difficulty
-        }
-    }
-
-    pub fn difficulty_calculation(&self, )
+    
 }
 
 impl<Hasher: Digest> Mechanism {
