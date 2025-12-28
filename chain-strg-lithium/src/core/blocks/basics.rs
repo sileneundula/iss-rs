@@ -6,8 +6,6 @@
 pub struct Block {
     id: u64,
     prev_hash: String,
-
-    pieces: Vec<>
 }
 
 pub trait StrgBlock {
