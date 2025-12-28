@@ -15,6 +15,8 @@ impl NetworkingInit {
         // Initialize Logging
         pretty_env_logger::init();
 
-        
+        log::info!("Starting Pretty Env Logger");
+
+
     }
 }
