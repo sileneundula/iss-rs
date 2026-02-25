@@ -1,6 +1,6 @@
 [workspace]
 resolve = "3"
-members = ["chain-strg-lithium", "consensus-core-lithium", "consensus-dpos-lithium", "consensus-dpow-0x20cb-lithium", "consensus-pos-lithium", "consensus-pow-lithium","lemur-historical-archive-lib", "modern-address-scheme-rs"]
+members = ["chain-strg-lithium", "consensus-core-lithium", "consensus-dpos-lithium", "consensus-dpow-0x20cb-lithium", "consensus-pos-lithium", "consensus-pow-lithium", "iss-chain-framework","lemur-historical-archive-lib", "modern-address-scheme-rs"]
 
 [package]
 name = "iss-rs"
