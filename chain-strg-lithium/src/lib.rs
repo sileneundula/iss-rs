@@ -3,18 +3,20 @@
 //! A Decentralized Storage Network Chain. Use a DAG.
 //! 
 //! DAG-Based
+//! 
+//! ## Outline
+//! 
+//! - [ ] Block Lattice (DAG)
+//!     - [ ] Lemur (Historical Archive)
+//! - [ ] Configuration Methods
+//! - [ ] Basic Networking P2P
 
-pub struct StrgEcosystem {
-    id: u64,
 
-}
-
+/// Core components
 pub mod core;
 
-impl StrgEcosystem {
-    pub fn new(id: u64) -> Self {
-        Self {
-            id
-        }
-    }
-}
+/// Framework for Using Immutable Storage Solution
+pub mod framework;
+
+/// Prelude
+pub mod prelude;

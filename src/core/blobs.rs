@@ -37,21 +37,21 @@ impl Piece {
     /// 
     /// Gets a New Piece From Bytes and Pads With Zeroes
     pub fn new(bytes: &[u8]) -> Self {
-        println!("Creating new Piece from bytes, length: {}", bytes.len());
+        debug!("Creating new Piece from bytes, length: {}", bytes.len());
         let length = bytes.len();
         
         if length > PIECE_SIZE_IN_BYTES {
-            println!("[ISS::PIECE] Bytes too large and are over {0} with byte length being: {1}", PIECE_SIZE_IN_BYTES,length);
+            debug!("[ISS::PIECE] Bytes too large and are over {0} with byte length being: {1}", PIECE_SIZE_IN_BYTES,length);
             panic!("Bytes too large")
         }
         else if length == PIECE_SIZE_IN_BYTES {
-            println!("[ISS::PIECE] Bytes match PIECE_SIZE_IN_BYTES exactly");
+            debug!("[ISS::PIECE] Bytes match PIECE_SIZE_IN_BYTES exactly");
             let mut byte_slice: [u8;PIECE_SIZE_IN_BYTES] = [0u8;PIECE_SIZE_IN_BYTES];
             byte_slice.copy_from_slice(bytes);
             return Self(byte_slice)
         }
         else if length < PIECE_SIZE_IN_BYTES {
-            println!("[ISS::PIECE] Bytes less than PIECE_SIZE_IN_BYTES, padding with zeroes");
+            debug!("[ISS::PIECE] Bytes less than PIECE_SIZE_IN_BYTES, padding with zeroes");
             // Byte Slice
             let mut byte_slice: [u8;PIECE_SIZE_IN_BYTES] = [0u8;PIECE_SIZE_IN_BYTES];
 
@@ -83,7 +83,6 @@ impl Piece {
         }
     }
     pub fn from_bytes(bytes: &[u8]) -> Self {
-        println!("%");
         let mut output_bytes: [u8; 262144] = [0u8;PIECE_SIZE_IN_BYTES];
         
         if bytes.len() == PIECE_SIZE_IN_BYTES {

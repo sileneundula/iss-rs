@@ -1,0 +1,1 @@
+pub const IDENTIFY: &str = "ImmutableStorageSolution-Identify";

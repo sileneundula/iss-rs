@@ -1,6 +1,8 @@
 pub mod internals;
 pub mod consensus;
 pub mod storage;
+
+/// Networking using libp2p
 pub mod network;
 pub mod types;
 pub mod utils;
